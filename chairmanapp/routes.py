@@ -7,7 +7,7 @@ from societymemberapp.models import User
 
 chairmanapp_bp = Blueprint('chairmanapp', __name__)
 
-"""@chairmanapp_bp.route('/insert_sample_data', methods=['GET'])
+@chairmanapp_bp.route('/insert_sample_data', methods=['GET'])
 def insert_sample_data():
     from app import db
     # Sample data to insert into the MongoDB collection
@@ -22,7 +22,7 @@ def insert_sample_data():
         db.users.insert_one(sample_data)
         return jsonify({'message': 'Sample data inserted successfully.'})
     except Exception as e:
-        return jsonify({'error': str(e)})"""
+        return jsonify({'error': str(e)})
 
 @chairmanapp_bp.route('/')
 def home():

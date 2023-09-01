@@ -48,7 +48,7 @@ def societymember_change_password():
             newpassword = request.form['newpassword']
 
             if uid["password"] == currentpassword:
-                # Update the password in the DB collection
+                # Update the password in the MongoDB collection
                 db.users.update_one(
                     {"_id": uid["_id"]},
                     {"$set": {"password": newpassword}}
