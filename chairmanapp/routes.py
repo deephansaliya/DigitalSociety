@@ -10,7 +10,7 @@ chairmanapp_bp = Blueprint('chairmanapp', __name__)
 @chairmanapp_bp.route('/insert_sample_data', methods=['GET'])
 def insert_sample_data():
     from app import db
-    # Sample data to insert into the MongoDB collection
+    # Sample data to insert  the MongoDB collection
     sample_data = {
         'name': 'John Doe',
         'email': 'john@example.com',
