@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='chairmanapp/templates')
 
 
 app.secret_key = 'bfa78cc0ba1181880f980b0dd504c11c'
@@ -31,7 +31,7 @@ from societymemberapp.models import Societymember
 from chairmanapp.routes import chairmanapp_bp
 from societymemberapp.routes import societymemberapp_bp 
 
-app.register_blueprint(chairmanapp_bp)
+app.register_blueprint(chairmanapp_bp, url_prefix='/chairmanapp')
 app.register_blueprint(societymemberapp_bp)
 
 
@@ -52,6 +52,11 @@ def admin():
 @app.route('/societymember')
 def societymember():
     return render_template('societymember/index.html')
+
+@app.route('/chairmanapp/login/', methods=['GET', 'POST'])
+def chairman_login():
+    # Your chairman login route code here
+    return render_template("chairmanapp/login.html")
 
 @app.route('/create_user', methods=['POST'])
 def create_user():
