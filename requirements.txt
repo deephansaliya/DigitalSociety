@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 click==7.1.2
 dnspython==2.1.0
 Flask==1.1.2
+=======
+blinker==1.6.2
+certifi==2023.7.22
+charset-normalizer==3.2.0
+click==8.1.7
+dnspython>=1.16.0
+docopt==0.6.2
+Flask==2.3.3
+>>>>>>> 8213671345af2e8456ea5f5cefd282ccd1a0d625
 Flask-PyMongo==2.3.0
 itsdangerous==1.1.0
 Jinja2==2.11.3
