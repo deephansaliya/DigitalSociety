@@ -39,8 +39,8 @@ app.register_blueprint(societymemberapp_bp)
 def home():
     return render_template('chairmanapp/index.html')
 
-@app.route('/admin/')
-def admin():
+@app.route('/index/')
+def index():
     
     users = user_collection.find()
     chairmen = chairman_collection.find()

@@ -29,20 +29,21 @@ def home():
     from app import db
     if "email" in session:
         uid = db.users.find_one({"email": session['email']})
-        if uid['role'] == "chairman":
-            cid = db.chairman.find_one({"user_id": uid['_id']})
+        cid = db.chairman.find_one({"user_id": uid['_id']})
+        if uid['role'] == "chairman" and cid:
+            print("Found chairman data:", cid) 
             context = {
                 'uid': uid,
                 'cid': cid,
             }
-            return render_template("chairmanapp/index.html", context)
+            return render_template("chairmanapp/index.html", **context) # Pass context as keyword arguments
         else:
             sid = db.societymember.find_one({"user_id": uid['_id']})
             context = {
                 'uid': uid,
                 'sid': sid,
             }
-            return render_template("societymemberapp/index.html", context)
+            return render_template("societymemberapp/index.html",**context)  # Pass context as keyword arguments
     else:
         return redirect("login")
 
@@ -124,3 +125,14 @@ def chairman_change_password():
         return render_template("chairmanapp/profile.html", context=context)
     else:
         return redirect("login")
+
+#html 
+@chairmanapp_bp.route('/doctor/events')
+def events():
+    # Your view logic here
+    return render_template('chairmanapp/events.html')
+
+@chairmanapp_bp.route('/app/inbox')
+def inbox():
+    # Your view logic here
+    return render_template('chairmanapp/inbox.html')
