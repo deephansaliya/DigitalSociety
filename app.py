@@ -39,13 +39,19 @@ app.register_blueprint(societymemberapp_bp)
 def home():
     return render_template('chairmanapp/index.html')
 
-@app.route('/index/')
+# Import the necessary MongoDB collections
+user_collection = db.users  # Replace 'users' with the actual collection name
+chairman_collection = db.chairman  # Replace 'chairman' with the actual collection name
+societymember_collection = db.societymember  # Replace 'societymember' with the actual collection name
+
+@app.route('/index')
 def index():
-    
+    # Use the defined collections to retrieve data
     users = user_collection.find()
     chairmen = chairman_collection.find()
     societymembers = societymember_collection.find()
-    return render_template('admin.html', users=users, chairmen=chairmen, societymembers=societymembers)
+    return render_template('index.html', users=users, chairmen=chairmen, societymembers=societymembers)
+
 
 
 
